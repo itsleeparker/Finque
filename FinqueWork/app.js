@@ -1,21 +1,22 @@
 const  express = require("express");
 const  bodyParser = require("body-parser");
 const app = express();
+const randomMsg = require(__dirname+'/greetings.js') 
 const PORT = 3000;
 
 //set the view engine and the body parser
 app.use(bodyParser.urlencoded({extended:true}));
-app.use(express.static('public'));
+app.use(express.static(__dirname+'/public'));
 app.set('view engine' , 'ejs');
 
-const greetings = ['Welcome' , 'Hello There' , 'Glad to see you'];
 let usrPage = 'login';
 let btn = 'signup';
 app.get('/' , (req  ,res)=>{
 
 	res.render('welcome', {
 		   page: usrPage,
-		   msg:greetings[0],
+		   msg:randomMsg.getGreetings() ,
+	           btnMssg:randomMsg.btnMessage(usrPage) ,
 		   btnName:btn
 	});
 });
@@ -23,7 +24,7 @@ app.get('/' , (req  ,res)=>{
 app.post('/' , (req , res)=>{
 	usrPage = req.body.btn;
 	if(usrPage === 'login'){
-		btn = 'signUp';
+		btn = 'signup';
 	}
 	else{
 		btn = 'login';

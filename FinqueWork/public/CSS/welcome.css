@@ -66,6 +66,7 @@ body{
   border-radius:15px;
   background:var(--white);
   font-size:2ch;
+  padding:5px 0;
   transition-delay:100ms;
 }
 
@@ -80,7 +81,7 @@ body{
   border-radius:10px;
   display:grid;
   grid-template-columns:1fr;
-  grid-template-rows:1fr 1fr;
+  grid-template-rows:1fr 0.5fr;
   margin:5%;
 }
 
