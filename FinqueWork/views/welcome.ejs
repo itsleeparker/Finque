@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Welcome To Finque</title>
+	<link rel="stylesheet" href="../CSS/welcome.css">
+</head>
+<body>
+	<section class ="container" >
+		<%- include(page); %>
+	</section>
+	
+	<div class="msg">
+		<h1><%= msg %></h1>
+		<form action="" method='POST'>
+			    <div class="btncontainer">
+			    	<!---Do not touch this button it takes data from the backend end changes according to users current pahe--->
+				<button name='btn' value='<%= btnName %>'><%= btnName %></button>
+  			   </div> 
+		</form>
+	</div>
+	
+</body>
+</html>
