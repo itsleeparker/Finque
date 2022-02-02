@@ -1,5 +1,6 @@
 const  express = require("express");
 const  bodyParser = require("body-parser");
+const {redirect} = require("express/lib/response");
 const app = express();
 const randomMsg = require(__dirname+'/greetings.js') 
 const PORT = 3000;
@@ -21,6 +22,24 @@ app.get('/' , (req  ,res)=>{
 	});
 });
 
+app.get('/home' , (req , res )=>{
+
+	res.render('home' ,{
+		    msg:randomMsg.getGreetings()
+	});
+})
+
+app.post('/home' ,(req , res)=>{
+	//reroute any login request to home 
+	let route = req.body.btn;
+	if(route == 'home'){
+		res.redirect('/home');
+	}else{
+		res.redirect('/');
+	}
+});
+
+
 app.post('/' , (req , res)=>{
 	usrPage = req.body.btn;
 	if(usrPage === 'login'){
@@ -30,7 +49,6 @@ app.post('/' , (req , res)=>{
 		btn = 'login';
 	}
 	res.redirect('/');
-	console.log(usrPage);
 })
 
 app.listen(PORT , ()=>{
