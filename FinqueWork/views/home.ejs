@@ -1,50 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Home</title>
-	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
-	<link rel="stylesheet" href="../CSS/styles.css">
-</head>
-<body>
-	<section class="header container">
-		<div class="content">
-			<h1>Finque</h1>
-		</div>
-		<div class="menu __flex __cols">
-		<div class="searachbox">
-			<input type="text" name='search'>
-		</div>
-		<ul class="container">
-				<li><a href="">Home</a></li>
-				<li><a href="">Contact Us</a></li>
-				<li><a href="">Abouts Us</a></li>
-			</ul>
-		</div>
-	</section>
+	<!--Get The header file -->
+<%- include ('header'); %>
 	
 	<section class="main">
-		<div class="carousel-section">
+		<div class="carousel-section owl-carousel owl-theme ">
 				<!--This will conssist of some carousels to be displayed with animations -->
+				 <!---New applicants to be here with small different cards  use for each-->
+                                <%for(let i=0 ; i<carousel.length;++i){ %>
+                                        <div class="carousel-card">
+                                                <div class="img-container">
+                                                <img src="../Images/ApplicantImages/man<%= carousel[i].id %>.jpg" alt="A bold man standing">
+                                        </div>
+                                        <div  class="info">
+                                        <h1><%= carousel[i].name %></h1>
+                                        <h3><%= carousel[i].title %></h3>
+                                        <p><%= carousel[i].bio %></p>
+                                        </div>
+                                        </div>
+
+                                <%}%>
+				 <div class="owl-nav">
+        				<div class="owl-prev">prev</div>
+    	 				<div class="owl-next">next</div>
+    				</div>
+
 		</div>
 
 		<div class="userPanel">
 			<h1><%= msg %></h1>
 			<h2>Lee Parker</h2>		<!--This Section will be used to display user information-->
 			<div class="new-applicants-container">
-					<!---New applicants to be here with small different cards  use for each-->
-			
 			</div>
-		</div>
 
 		<div class="applicants-view">
 			<h1>New Arrivals</h1>		<!--This Section will be use to display all the applicants information-->
 
 		</div>
 	</section>
-	<section class="footer">
-
-	</section>
-</body>
-</html>
+<%- include('footer'); %>

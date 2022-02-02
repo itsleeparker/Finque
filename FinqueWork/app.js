@@ -2,7 +2,8 @@ const  express = require("express");
 const  bodyParser = require("body-parser");
 const {redirect} = require("express/lib/response");
 const app = express();
-const randomMsg = require(__dirname+'/greetings.js') 
+const randomMsg = require(__dirname+'/greetings.js');
+const applicant = require(__dirname+'/applicantData.js');
 const PORT = 3000;
 
 //set the view engine and the body parser
@@ -25,7 +26,8 @@ app.get('/' , (req  ,res)=>{
 app.get('/home' , (req , res )=>{
 
 	res.render('home' ,{
-		    msg:randomMsg.getGreetings()
+		    msg:randomMsg.getGreetings(),
+		    carousel:applicant.info
 	});
 })
 

@@ -32,7 +32,7 @@ body{
 	font-family:var(--font);
 	display:grid;
 	grid-template-columns: 100px 1fr;
-	grid-template-rows: 150px 1fr 1fr;
+	grid-template-rows: 150px 1fr 80px;
 	grid-template-areas: "header header"
 	                     "content  content"
 			     "footer footer";
@@ -72,17 +72,70 @@ a{
 	color:var(--blue);	
 }
 
-.header .content h1 , .header .content .menu{
-	margin:2% 10%;
+.header .menu .searchbox{
+	background: var(--white);
+	border-radius:15px;
+}
+
+.header .menu .searchbox input{
+	border:none;
+	background:transparent;
+	text-align: right;
+}
+
+.header .menu .searchbox input::-moz-focus-inner{
+	border:none;
+}
+.header .content h1{
+	margin:2% 5%;
 }
 
 .header .menu{
-	flex:0 1 20%;
-	margin:2% 15;
+	flex:0 1 25%;
 	justify-content: center;
 	align-items: center;
 }
 
 .header .menu ul li{
 	margin:5% 2%;
+}
+
+/*content section*/
+.main{
+	grid-area: content;
+	background:bisque;
+}
+
+.footer{
+	grid-area:footer;
+	background:var(--bg-color);
+	justify-content: center;
+	align-items: center;
+	font-size: 2ch;
+	font-weight: 800;
+	color:var(--blue);
+
+}
+
+/*CAROUSEL SECTION HERE */
+
+.carousel-card{  
+  display:flex;
+  width:80%;
+  background:linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url(../Images/carouselBg1.jpeg);
+  color:#fff;
+  max-height: 250px;
+}
+
+.carousel-container .img-container{
+  flex:0 1 70%;
+}
+
+.carousel-card .img-container img{
+  max-width:100%;
+  min-height:100%;
+}
+
+.info{
+  margin:0 3%;
 }
