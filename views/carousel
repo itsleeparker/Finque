@@ -1,0 +1,24 @@
+<!--<div class="carousel-section">
+                <div class="carousel-container owl-carousel owl-theme owl-loaded">
+                                        <%for(let i=0 ; i<carousel.length;++i){ %>
+                                        <div class=" item carousel-card">
+                                                <div class="img-container">
+                                                <img src="../Images/ApplicantImages/man<%= carousel[i].id %>.jpg" alt="A bold man standing">
+                                        </div>
+                                        <div  class="info">
+                                        <h1><%= carousel[i].name %></h1>
+                                        <h3><%= carousel[i].title %></h3>
+                                        <p><%= carousel[i].bio %></p>
+                                        </div>
+                                        </div>
+
+                                <%}%>
+
+                                 </div>
+                        </div>
+                
+                </div>
+                
+        
+                </div>-->
+

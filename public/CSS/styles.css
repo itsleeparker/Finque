@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;800;900&display=swap');
+:root{
+/*   PRIMARY COLORS */
+  --bg-color:#5cdb95;
+  --blue:#05386B;
+  --pal-green:#8EE4AF;
+  --pal-green2:#52ab98;
+/*   SECONDARY COLORS */
+  --desaturated-grey:#c8de4;
+  --white:#edf5e1;
+  --desaturated-green:#379683;
+  
+/*   FONTS */
+  --font:'Poppins', sans-serif;
+}
+
+
+*{
+  padding:0;
+  margin:0;
+}
+html , 
+body{
+	width:100%;
+	height:100%;
+}
+
+/*COMMON selectors*/
+
+body{
+	box-sizing: border-box;
+	font-family:var(--font);
+	display:grid;
+	grid-template-columns: 100px 1fr;
+	grid-template-rows: 150px 1fr 80px;
+	grid-template-areas: "header header"
+	                     "content  content"
+			     "footer footer";
+}
+
+li{
+	list-style: none;
+}
+
+a{
+	text-decoration: none;
+	color:#000;
+}
+/*common classes*/
+.__flex{
+	display:flex;
+}
+
+.__cols{
+	flex-direction: column;
+}
+.container{
+	display:flex;
+	width:100%;
+}
+
+.header{
+	flex-direction:row;
+	justify-content:space-between;
+	align-items: center;
+	grid-area: header;
+	background:var(--bg-color);
+}
+
+.header .content h1{
+	font-size:5ch;
+	color:var(--blue);	
+}
+
+.header .menu .searchbox{
+	background: var(--white);
+	border-radius:15px;
+}
+
+.header .menu .searchbox input{
+	border:none;
+	background:transparent;
+	text-align: right;
+}
+
+.header .menu .searchbox input::-moz-focus-inner{
+	border:none;
+}
+.header .content h1{
+	margin:2% 5%;
+}
+
+.header .menu{
+	flex:0 1 25%;
+	justify-content: center;
+	align-items: center;
+}
+
+.header .menu ul li{
+	margin:5% 2%;
+}
+
+/*content section*/
+.main{
+	grid-area: content;
+	display:grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-rows: 350px 1fr;
+	grid-template-areas: "admin admin admin recent"
+			      "view view view view";
+	
+}	
+
+.footer{
+	grid-area:footer;
+	background:var(--bg-color);
+	justify-content: center;
+	align-items: center;
+	font-size: 2ch;
+	font-weight: 800;
+	color:var(--blue);
+
+}
+
+.userPanel{
+	grid-area: admin;
+}
+
+.recent{
+	grid-column:recent;
+}
+
+/*NEW APPLICANTS SECTION*/
+.applicants-view{
+	grid-area:view;
+	text-align: center;
+}
+.applicants-section{
+  flex-wrap:wrap;
+  flex-direction:row;
+  justify-content: center;
+}
+.applicant-card{
+   width:35%;
+   gap:15px;
+   background:#5cdb95;
+   border-radius:15px;
+   box-shadow:0 1px 10px 1px ;
+   transition: width 1s ,height 2s,linear 1s;
+   margin:2%;
+   padding:9px;
+}
+
+.img-holder{
+  justify-content:center;
+  align-items:center;
+  margin:0 5%;
+}
+
+.img-holder img{
+  width:65px;
+  border-radius:50%;
+}
+
+.applicant-card .info{
+  width:100%;
+}
+
+.applicant-card .info h1{
+  text-decoration:underline white;
+}
+
+.applicant-card .info p{
+  padding: 5px;
+  display:none;
+  transition:ease;
+}
+
+/*CONTACT US PAGE*/
+.contact{
+	grid-area:content;
+	justify-content: center;
+	align-items: center;
+}
