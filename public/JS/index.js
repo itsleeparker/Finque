@@ -1,28 +1,3 @@
-$(document).ready(function (){
-	$('.owl-carousel').owlCarousel({
-    loop:true,
-    margin:10,
-    nav:true,
-    dots:false,
-    autoplay:true,
-    autoplayTimeout:2000,
-    stagePadding:70,
-    responsive:{
-        0:{
-            items:1
-        },
-        600:{
-            items:1
-        },
-        1000:{
-            items:1
-        }
-    },
-    navText : ["<i class='fa fa-chevron-left'></i>","<i class='fa fa-chevron-right'></i>"],
-   autoHeight:true
-})
-});
-
 //APPLICANT CARD 
 $(".applicant-card").hover(function(){
     $(this).css({'width':'50%'  ,'height':'280px'}) 
@@ -35,3 +10,11 @@ $(".applicant-card").hover(function(){
   	  $(this).removeClass('active');
 });
 
+//applicant list
+
+$('.applicant-list').click(function(){
+    $(this).find('.a-info').toggleClass('hidden');
+    $(this).addClass('active');
+    $('li').not(this).toggleClass('hidden');
+   });
+ 

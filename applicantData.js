@@ -12,7 +12,7 @@ exports.info = [
 			'expr':{
 				name:'Concentrix',
 				year:'14'
-			},
+			},                        
 			'projects':{
 				p1:'',
 				p2:'',

@@ -66,6 +66,7 @@ a{
 	align-items: center;
 	grid-area: header;
 	background:var(--bg-color);
+	position: fixed;
 }
 
 .header .content h1{
@@ -73,20 +74,6 @@ a{
 	color:var(--blue);	
 }
 
-.header .menu .searchbox{
-	background: var(--white);
-	border-radius:15px;
-}
-
-.header .menu .searchbox input{
-	border:none;
-	background:transparent;
-	text-align: right;
-}
-
-.header .menu .searchbox input::-moz-focus-inner{
-	border:none;
-}
 .header .content h1{
 	margin:2% 5%;
 }
@@ -106,11 +93,13 @@ a{
 	grid-area: content;
 	display:grid;
 	grid-template-columns: 1fr 1fr 1fr;
-	grid-template-rows: 350px 1fr;
-	grid-template-areas: "admin admin admin"
-			             "view view view ";
+	grid-template-rows: 350px 1fr 50px;
+	grid-template-areas:"admin admin admin"
+			    "view view view " 
+			    "link link link";
 	
 }	
+
 
 .footer{
 	grid-area:footer;
@@ -130,7 +119,7 @@ a{
 	grid-template-rows: 1fr 1fr 1fr;
 	grid-template-areas: "greetings greetings"
 	                      "username userInfo"
-			      		 "weather weather";
+			     "weather weather";
 }
 
 .userPanel h1{
@@ -150,6 +139,18 @@ a{
 }
 .userPanel .weatherBox{
 	grid-area: weather;
+}
+
+
+.main .view{
+	grid-area:link;
+	font-size:3ch;
+	font-weight: 700;
+	text-align: center;
+}
+
+.main .view a{
+	color:var(--blue);
 }
 
 /*NEW APPLICANTS SECTION*/
@@ -187,6 +188,7 @@ a{
 
 .applicant-card .info{
   width:100%;
+  height: auto;
 }
 
 .applicant-card .info h1{
@@ -194,7 +196,7 @@ a{
 }
 
 .applicant-card .info p{
-  font-size: 3ch;
+  font-size: 2ch;
   padding: 5px;
   display:none;
   transition:ease;
@@ -261,4 +263,66 @@ a{
 }
 .contact .social-list ul li a i:hover{
 	color:var(--desaturated-green);
+}
+
+
+/* APPLICANT PAGE SECTION  */
+.hidden{
+	display:none;
+  }
+ .applicant-main{
+	 grid-area:content;
+ } 
+.applicant-main ul{
+	display:grid;
+	grid-template-columns:1fr;
+	grid-auto-rows: minmax(100px , 1fr);
+	justify-content:center;
+  }
+  
+.applicant-main ul li{
+	  width:90%;
+	  margin:1% auto;
+	  padding: 2px 5px;
+	  border-radius:15px;
+	  box-shadow: 0px 0px 7px 5px;
+	  justify-content: space-between;
+	  transition: width 4s height 2s linear 1s;
+}
+.applicant-list .edu{
+	margin:0 9%;
+}
+
+.applicant-list h3{
+	color:var(--blue);
+	font-size:3.8ch;
+}
+
+.applicant-list .a-info{
+ 	position: relative;
+}
+
+.applicant-list .a-info div , .applicant-list form{
+	margin: 3% 5%;
+}
+
+.applicant-list .ex-msg{
+	position:absolute;
+	top:2%;
+	right:5%;
+	opacity:0.7;
+}
+
+.applicant-list form button{
+	background:var(--blue);
+	margin:5% auto;
+	width:20%;
+	color:var(--white);
+	border:none;
+	border-radius:25px;
+	padding:7px 0;
+}
+
+.applicant-list form button:hover{
+	opacity: 0.6;
 }

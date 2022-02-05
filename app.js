@@ -39,7 +39,7 @@ app.get('/home' , (req , res )=>{
 		   let icon;
 		   let imgUrl;
 		   https.get(url , (response)=>{
-                  console.log(response.statusCode);                                                                  //listen for any incoming data from the servers                  
+                                                                     //listen for any incoming data from the servers                  
 		  response.on('data' , (data)=>{                  //the incomeing data will be in hexcademinal fromat 
                   const weatherData =  JSON.parse(data);          //convert the incoming data into Javascript object
                   //get the individual data
@@ -126,7 +126,7 @@ app.post('/' , (req , res)=>{
 //APPLICANT PAGE
 app.get('/applicant' , (req , res)=>{
 	res.render('applicant',  {
-		   applicantData:applicant.info;
+		   applicantData:applicant.info
 		});
 });
 
@@ -136,6 +136,6 @@ app.get('/contactUs' , (req ,res)=>{
 	res.render('contactUs');
 })
 
-app.listen(PORT , ()=>{
+app.listen(process.env.PORT||PORT , ()=>{
 	console.log("Server started at port 3000");
 });

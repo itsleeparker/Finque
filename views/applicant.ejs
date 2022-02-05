@@ -1,15 +1,39 @@
 <%- include('header'); %>
-<% for(let i=0 ; i<5 ; ++i){ %>
-  <div class="abtn applicant-card __flex">
-      <div class="img-holder __flex">
-          <img src="https://i.pinimg.com/736x/b6/f3/48/b6f3484bfe1973a74b16101837d38d7b.jpg" alt="">
-      </div>
-      <div class="info">
-          <h1 id='aname' ><%= applicant[i].name %></h1>
-          <h3><%= applicant[i].title %></h3>
-          <p class='bio'><%= applicant[i].bio %></p>
-      <span class="id"><%= applicant[i].id %></span>
-      </div>
-  </div>				
-  <%}%>
+    <div class="applicant-main">
+            
+        <% for(let i=0 ; i<applicantData.length ; ++i){ %>
+            <ul>
+                <li class='applicant-list  __flex __cols'>
+                    <div class="name __flex">
+		    	<div class="img-holder">
+				<img src="https://i.pinimg.com/736x/b6/f3/48/b6f3484bfe1973a74b16101837d38d7b.jpg" alt="">
+			</div>
+			<div class="data">
+                        	<h3><%= applicantData[i].name %></h3>
+                        	<p><%= applicantData[i].title %></p>
+			</div>
+                    </div>
+                    <div class="edu">
+                        <p><%= applicantData[i].Profile.education.major %></p>
+                    </div>
+                     <div class="a-info hidden">
+		     	   <span class='ex-msg'>Click Again to exit</span>
+                            <div class="education">
+                              <h1>College</h1>
+                              <h2><%=applicantData[i].Profile.education.name%></h2>
+                              <p>Year:<%= applicantData[i].Profile.education.year %> </p>
+                            </div>
+                            <div class="expr">
+                              <h1>Company</h1>
+                              <h3> <%= applicantData[i].Profile.expr.name%> </h3>
+                              <p>Years  : <%= applicantData[i].Profile.expr.year%></p>
+                            </div> 
+			    <form action="mainto:leeparker0910@gmail.com">
+				<button class="btn">Send Mail</button>
+			    </form>
+                    </div>
+                </li>
+            </ul>
+        <%}%>
+    </div>
 <%- include('footer'); %>
