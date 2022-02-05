@@ -1,15 +1,25 @@
 <%- include('header'); %>
 	<section class="container contact">
-		<form action="mailto:leeparker0910@gmail.com" method="post" enctype='text/plain'>
-			<div class="name __flex __cols">
+		<form action="mailto:leeparker0910@gmail.com" class='__flex __cols' method="post" enctype='text/plain'>
+			<div class=" __flex __cols name">
 				<label for="name">Enter Your Name</label>
 				<input type="text" name='name'>
 			</div>
-			<div class="message">
+			<div class="message __flex __cols">
 				<textarea  name="usrMessage" cols="30" rows="10">Enter Your Message</textarea>
 			</div>
 			<button>Submit</button>
 		</form>
+
+		<div class=" __flex __cols social-list">
+			<h2>Try Rea ching us at</h2>
+			<ul>
+				<li><a href=""><i class="fab fa-4x fa-instagram"></i></a></li>
+				<li><a href=""><i class="fab fa-4x fa-github-square"></i></a></li>
+				<li><a href=""><i class="fas fa-4x fa-envelope-square"></i></a></li>
+				<li><a href=""><i class="fas fa-4x fa-google"></i></a></li>
+			</ul>
+		</div>
 	</section>
 
 <%- include('footer'); %>

@@ -1,6 +1,7 @@
 const  express = require("express");
 const  bodyParser = require("body-parser");
 const {redirect} = require("express/lib/response");
+const https  = require("https");
 const app = express();
 const randomMsg = require(__dirname+'/greetings.js');
 const applicant = require(__dirname+'/applicantData.js');
@@ -15,9 +16,9 @@ app.set('view engine' , 'ejs');
 let usrPage = 'login';
 let btn = 'signup';
 let errorMsg = '';
-let crUser = {};
+let id = {};
 app.get('/' , (req  ,res)=>{
-
+		   
 	res.render('welcome', {
 		   page: usrPage,
 		   msg:randomMsg.getGreetings() ,
@@ -28,28 +29,63 @@ app.get('/' , (req  ,res)=>{
 });
 
 app.get('/home' , (req , res )=>{
-
-	res.render('home' ,{
-		    msg:randomMsg.getGreetings(),
-		    applicant:applicant.info,
-		    usr:'Lee'
+		   //get weather data
+			const city = 'Pune';
+           const apiKey ="7598027fad1bdd5b2cef0c2a0f4e8c3e";
+           const unit = "metric";
+           const url = "https://api.openweathermap.org/data/2.5/weather?q="+city+"&units="+ unit +"&appid="+apiKey;
+		   let temp;
+		   let description;
+		   let icon;
+		   let imgUrl;
+		   https.get(url , (response)=>{
+                  console.log(response.statusCode);                                                                  //listen for any incoming data from the servers                  
+		  response.on('data' , (data)=>{                  //the incomeing data will be in hexcademinal fromat 
+                  const weatherData =  JSON.parse(data);          //convert the incoming data into Javascript object
+                  //get the individual data
+                  	  temp  = weatherData.main.temp ;
+                      description = weatherData.weather[0].description ;
+                  	  icon   = weatherData.weather[0].icon ;
+                  	  imgUrl  = "https://openweathermap.org/img/wn/"+icon+"@2x.png" ;
+					
+					 res.render('home' ,{
+		    				msg:randomMsg.getGreetings(),
+		    				applicant:applicant.info,
+		    				usr:id,
+							temp:temp,
+							img:imgUrl
+                  });
+           });
+	
 	});
 })
 
-app.post('/home' ,(req , res)=>{
+app.post('/home' , (req  , res)=>{
+	console.log(req);
+})
+
+
+//THIS  IS A POST ROUTE JUST FOR REDIRECTION AND LOGIN PURPOSE
+app.post('/login' ,(req , res)=>{
+	//post for login 
 	let newUsers = {
                 email:req.body.email,
                 fname:req.body.fname,
                 lname:req.body.lname,
                 pwd:req.body.pwd                //No hashing done just the regular password
         }
+
 	let cred = {
 		email : req.body.mail , 
 		pwd   : req.body.pwd
 	}
-	//add users 
+	//add users
+	id = users.fetchUser(cred.email);
+	if(id == ''){
+		errorMsg = 'Credientials Not found try again';
+	}
 	//reroute any login request to home 
-	let route = req.body.btn;
+	let route = req.body.btnr;
 	if(route == 'home'){
 		
 		//check the credientials for log in 
@@ -59,7 +95,7 @@ app.post('/home' ,(req , res)=>{
 		}
 		else{
 			errorMsg = '';
-			res.redirect('/home');
+			return res.redirect('/home');
 		}
 	}else{
 		//this will handle exceptions if users already exisit
@@ -71,6 +107,8 @@ app.post('/home' ,(req , res)=>{
 		}
 		res.redirect('/');
 	}
+	res.redirect('/');
+
 });
 
 
@@ -81,11 +119,17 @@ app.post('/' , (req , res)=>{
 	}
 	else{
 		btn = 'login';
-	}
-
-
+	}	
 	res.redirect('/');
 })
+
+//APPLICANT PAGE
+app.get('/applicant' , (req , res)=>{
+	res.render('applicant',  {
+		   applicantData:applicant.info;
+		});
+});
+
 
 //CONTACT US PAGE 
 app.get('/contactUs' , (req ,res)=>{

@@ -1,0 +1,15 @@
+<%- include('header'); %>
+<% for(let i=0 ; i<5 ; ++i){ %>
+  <div class="abtn applicant-card __flex">
+      <div class="img-holder __flex">
+          <img src="https://i.pinimg.com/736x/b6/f3/48/b6f3484bfe1973a74b16101837d38d7b.jpg" alt="">
+      </div>
+      <div class="info">
+          <h1 id='aname' ><%= applicant[i].name %></h1>
+          <h3><%= applicant[i].title %></h3>
+          <p class='bio'><%= applicant[i].bio %></p>
+      <span class="id"><%= applicant[i].id %></span>
+      </div>
+  </div>				
+  <%}%>
+<%- include('footer'); %>

@@ -1,11 +1,15 @@
-
-	<!--Get The header file -->
-<%- include ('header'); %>
+<%- include('header'); %>
 	
 	<section class="main">
 		<div class="userPanel">
 			<h1><%= msg %></h1>
-			<h2><%= usr %></h2>		<!--This Section will be used to display user information-->
+			<h2><%= usr.fname %></h2>		<!--This Section will be used to display user information-->
+			<p>Email  <%= usr.email %></p>
+			<div class="weatherBox">
+				<h1>Th Weather today</h1>
+				<h2><%= temp%></h2>
+				<img src="<%= img %>" alt="">
+			</div>
 		</div>
 		<div class="recent">
 			<h3>Recent Search</h3>
@@ -13,20 +17,20 @@
 		<div class="applicants-view">
 			<h1>New Arrivals</h1>		<!--This Section will be use to display all the applicants information-->
 			<div class="applicants-section __flex">
-				<% for(let i=0 ; i<applicant.length/2 ; ++i){ %>
-					<div class="applicant-card __flex">
+				<% for(let i=0 ; i<5 ; ++i){ %>
+					<div class="abtn applicant-card __flex">
   						<div class="img-holder __flex">
     							<img src="https://i.pinimg.com/736x/b6/f3/48/b6f3484bfe1973a74b16101837d38d7b.jpg" alt="">
   						</div>
  						 <div class="info">
-    							<h1><%= applicant[i].name %></h1>
+    							<h1 id='aname' ><%= applicant[i].name %></h1>
     							<h3><%= applicant[i].title %></h3>
     							<p class='bio'><%= applicant[i].bio %></p>
   						</div>
-					</div>  
-    					
-				<%}%>
-			</div>
+					</div>				
+					<%}%>
+						</div>
 		</div>
+						<a href="/applicants">View All</a>
 	</section>
 <%- include('footer'); %>

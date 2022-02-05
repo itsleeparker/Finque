@@ -53,6 +53,7 @@ a{
 
 .__cols{
 	flex-direction: column;
+	justify-content:center;
 }
 .container{
 	display:flex;
@@ -104,10 +105,10 @@ a{
 .main{
 	grid-area: content;
 	display:grid;
-	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-columns: 1fr 1fr 1fr;
 	grid-template-rows: 350px 1fr;
-	grid-template-areas: "admin admin admin recent"
-			      "view view view view";
+	grid-template-areas: "admin admin admin"
+			             "view view view ";
 	
 }	
 
@@ -124,10 +125,31 @@ a{
 
 .userPanel{
 	grid-area: admin;
+	display:grid;
+	grid-template-columns: 1fr .5fr;
+	grid-template-rows: 1fr 1fr 1fr;
+	grid-template-areas: "greetings greetings"
+	                      "username userInfo"
+			      		 "weather weather";
 }
 
-.recent{
-	grid-column:recent;
+.userPanel h1{
+	grid-area:greetings;
+	color:var(--blue);
+	font-size:3.5ch;
+}
+
+.userPanel h2{
+	grid-area:username;
+	font-size: 5ch;
+	font-weight: 700;
+}
+
+.userPanel p{
+	grid-area:userInfo;
+}
+.userPanel .weatherBox{
+	grid-area: weather;
 }
 
 /*NEW APPLICANTS SECTION*/
@@ -141,9 +163,10 @@ a{
   justify-content: center;
 }
 .applicant-card{
-   width:35%;
+   width:30%;
    gap:15px;
    background:#5cdb95;
+   border:none;
    border-radius:15px;
    box-shadow:0 1px 10px 1px ;
    transition: width 1s ,height 2s,linear 1s;
@@ -154,7 +177,7 @@ a{
 .img-holder{
   justify-content:center;
   align-items:center;
-  margin:0 5%;
+  margin:0 2%;
 }
 
 .img-holder img{
@@ -171,6 +194,7 @@ a{
 }
 
 .applicant-card .info p{
+  font-size: 3ch;
   padding: 5px;
   display:none;
   transition:ease;
@@ -179,6 +203,62 @@ a{
 /*CONTACT US PAGE*/
 .contact{
 	grid-area:content;
+	display:grid;
+	grid-template-columns: 70% 10%;
+	grid-template-rows: 100%;
+	grid-template-areas: "form social-list";
+	justify-content: space-between;
+}
+
+.contact form{
+	grid-area:form;
+	width:50%;
+	max-height:auto;
+	background:var(--white);
+	border-radius: 15px;
+	box-shadow:  0px 1px  10px 1px;
+	margin:auto;
+}
+
+.contact form .name{
 	justify-content: center;
-	align-items: center;
+	text-align: center;
+}
+
+.contact form input , .contact form textarea{
+	background-color: var(--pal-green);
+	border:none;
+	border-radius:10px;
+	width:60%;
+	padding:5px;
+	margin:2% auto;
+}
+
+.contact form button{
+	background:var(--blue);
+	border:none;
+	border-radius:15px;
+	padding:7px;
+	margin:3% 25%;
+	color:var(--white);
+	font-size: 1.8ch;
+}
+
+.contact form button:hover{
+	opacity:0.6;
+}
+
+.contact .social-list{
+	background:var(--desaturated-grey);
+	font-size:.9ch;
+	grid-area: social-list;
+	text-align: center;
+	justify-content: flex-start;
+}
+
+.contact .social-list ul li{
+	margin:3% 0;
+}
+.contact .social-list ul li a i:hover{
+	color:var(--desaturated-green);
 }

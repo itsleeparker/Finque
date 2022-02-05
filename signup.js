@@ -36,6 +36,7 @@ exports.fetchUser = (email)=>{
 			return users[i];
 		}
 	}
+	return '';
 }
 
 function userExist(obj){

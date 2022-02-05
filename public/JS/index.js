@@ -29,8 +29,9 @@ $(".applicant-card").hover(function(){
     $(this).addClass('active');
  $('.applicant-card+.active .info .bio').fadeIn().css('display' ,'block');
   } , function(){
-      $(this).css({'width':'35%'  ,'height':'auto'});
+          $(this).css({'width':'30%'  ,'height':'auto'});
       
           $('.applicant-card+.active .info .bio').fadeOut().css('display' ,'none');
-  $(this).removeClass('active');
+  	  $(this).removeClass('active');
 });
+
