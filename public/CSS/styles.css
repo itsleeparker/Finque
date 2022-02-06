@@ -313,16 +313,18 @@ a{
 	opacity:0.7;
 }
 
-.applicant-list form button{
+.applicant-list .contact-btn button{
 	background:var(--blue);
 	margin:5% auto;
 	width:20%;
-	color:var(--white);
 	border:none;
 	border-radius:25px;
 	padding:7px 0;
 }
 
-.applicant-list form button:hover{
+.applicant-list .contact-btn button a{
+	color:var(--white);
+}
+.applicant-list .contact-btn button:hover{
 	opacity: 0.6;
 }
